@@ -7,11 +7,13 @@ class SpriteSheet:
         width = sheet.get_width()
         height = sheet.get_height()
 
+        # This code is made for spritesheets that space the sprites apart equally, as it divides the height and width by the number rows and columns
         cell_width = int(width / columns)
         cell_height = int(height / rows)
 
         image = pygame.Surface((cell_width,cell_height)).convert_alpha()
 
+        # The -1s in the are calculation are due to a personal preference for the top left sprite to be (1,1) instead of (0,0)
         sprite = image.blit(sheet, (0,0), area=((cell_width*(column_number-1),cell_height*(row_number-1),cell_width,cell_height)))
 
         return [image,sprite]
